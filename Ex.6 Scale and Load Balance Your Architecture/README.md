@@ -66,11 +66,25 @@ Students test the setup by generating traffic and observing automatic scaling an
 
 ## Workflow (To be filled by Student)
 
-Describe step-by-step how you performed this experiment in your own words.
+1. I reviewed the existing EC2-based application architecture that I had created in previous experiments to understand how the instances were configured and how the application was being accessed.
+
+2. I created a Launch Template by defining the EC2 configuration, including the Amazon Machine Image (AMI), instance type, key pair, security group, and user data script for automatic application setup during instance launch.
+
+3. Using the launch template, I created an Auto Scaling Group. I configured the minimum, maximum, and desired capacity values to control how many EC2 instances should run based on demand. I also selected the appropriate VPC and subnets.
+
+4. Next, I created an Application Load Balancer and configured a target group. I set the protocol and port (HTTP/HTTPS) and defined health check settings to monitor the EC2 instances.
+
+5. I attached the Auto Scaling Group to the target group so that any instances launched by the Auto Scaling Group would automatically register with the Load Balancer.
+
+6. I configured scaling policies based on CPU utilization. I created Amazon CloudWatch alarms to automatically increase the number of instances when CPU usage was high and decrease them when CPU usage was low.
+
+7. Finally, I tested the setup by generating traffic to the Load Balancer DNS name. I observed that the traffic was distributed evenly across instances and that additional instances were launched automatically when the CPU utilization threshold was exceeded.
 
 ---
 
 ## Output Screenshots 
+<img width="1280" height="832" alt="Screenshot 2026-03-17 at 9 55 33 PM" src="https://github.com/user-attachments/assets/1ff4434f-2a4f-46cd-9a65-0d3cedbf38e9" />
+<img width="1280" height="832" alt="Screenshot 2026-03-17 at 9 55 40 PM" src="https://github.com/user-attachments/assets/da728c7b-5322-4051-9113-b351d253b3f9" />
 
 
 ---
